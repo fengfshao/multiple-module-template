@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>multiple-module-template</artifactId>
+        <groupId>com.tanpopo.demo</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>commons</artifactId>
+
+    <properties>
+        <project.root.relativePath>..</project.root.relativePath>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!--protobuf编译插件-->
+            <plugin>
+                <groupId>com.github.igor-petruk.protobuf</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.6.5</version>
+                <configuration>
+                    <!--Setting to "true" disables version check between 'protoc' and the protobuf library used by module-->
+                    <ignoreVersions>true</ignoreVersions>
+                    <inputDirectories>
+                        <inputDirectory>
+                            ${project.basedir}/src/main/resources/proto
+                        </inputDirectory>
+                    </inputDirectories>
+                    <includeDirectories>
+                        <includeDirectory>
+                            ${project.basedir}/src/main/resources
+                        </includeDirectory>
+                    </includeDirectories>
+                    <protocCommand>/usr/local/bin/protoc3</protocCommand>
+                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                    <cleanOutputFolder>false</cleanOutputFolder>
+                </configuration>
+                <executions>
+                    <!--<execution><phase>process-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>-->
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
