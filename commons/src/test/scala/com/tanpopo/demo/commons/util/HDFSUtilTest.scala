@@ -6,7 +6,7 @@ import org.scalatest.funsuite.AnyFunSuite
 /**
  * HDFSUtil单测
  *
- * @author fengfshao
+ * @author tanpopo
  * @since 2023/6/2
  *
  */
