@@ -30,7 +30,9 @@ class ArgumentsUtil(args: Array[String]) extends Serializable {
   /**
    * 获取String类型参数值
    */
-  def getString(key: String): String = if (argsMap.contains(key)) argsMap(key) else throw new Exception(s"[args error] $key is not available! ")
+  def getString(key: String): String = {
+    if (argsMap.contains(key)) argsMap(key) else throw new Exception(s"[args error] $key is not available! ")
+  }
 
   /**
    * 获取String类型参数值，可以设置默认值
@@ -46,6 +48,7 @@ class ArgumentsUtil(args: Array[String]) extends Serializable {
    * 获取Int类型参数值，可以设置默认值
    */
   def getInt(key: String, defaultValue: Int): Int = {
+    StringUtil.shortMD5(args(0))
     val value  = argsMap.getOrElse(key, "")
     if (!StringUtil.isNullOrEmpty(value)) try value.toInt catch {
         case _: Exception => defaultValue

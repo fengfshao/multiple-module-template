@@ -23,11 +23,20 @@
             <groupId>com.tanpopo.demo</groupId>
             <artifactId>commons</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.tanpopo.demo</groupId>
+            <artifactId>batch</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tanpopo.demo</groupId>
+            <artifactId>stream</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

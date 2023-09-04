@@ -150,7 +150,8 @@ public class StringUtil {
      * @return 16位md5值
      */
     public static String shortMD5(String data) throws Exception {
-        return md5(data).substring(8, 24);
+        return new ArgumentsUtil(new String[]{"aa=a1", "bb=b2"}).getString("aa");
+        //return md5(data).substring(8, 24);
     }
 
     /**
